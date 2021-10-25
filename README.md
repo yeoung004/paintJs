@@ -1,2 +1,3 @@
 # paintJs
-Create a pinting app with VanilliaJS
+### Create a pinting app with VanilliaJS
+### Practicing for VanillaJS
