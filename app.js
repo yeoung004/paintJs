@@ -4,16 +4,17 @@ const canvas = document.getElementById("jsCanvas");
 const colors = document.getElementsByClassName("controls__color");
 const range = document.getElementById("jsRange");
 const clean = document.getElementById("jsClean");
-const cursor = document.getElementById("jsCursor");
 const ctx = canvas.getContext("2d");
 
 let painting = false;
 
-canvas.width = 595;
-canvas.height = 670;
-
-ctx.strokeStyle = "black";
-ctx.lineWith = 2.5;
+(function setCanvas(){
+    canvas.width = 595;
+    canvas.height = 670;
+    
+    ctx.strokeStyle = "black";
+    ctx.lineWith = 2.5;
+})();
 
 function startPainting() {
     painting = true;
@@ -21,18 +22,12 @@ function startPainting() {
 
 function stopPainting() {
     painting = false;
-
-    cursor.style.visibility = "hidden";
 }
 
 
 function onMouseMove(event) {
     const x = event.offsetX;
     const y = event.offsetY;
-
-    cursor.style.visibility = "visible";
-    cursor.style.top = `${y}px`;
-    cursor.style.left = `${x+20}px`;
 
     if (!painting) {
         ctx.beginPath();

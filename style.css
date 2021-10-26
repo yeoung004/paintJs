@@ -27,26 +27,11 @@ body, html {
 }
 
 .canvas {
-    cursor: none;
+    cursor: url('brush.cur');
     position: absolute;
     width: 595px;
     height: 670px;
     margin-bottom: 90px;
-}
-
-.wrap__cursor {
-    width: 595px;
-    height: 670px;
-    margin-bottom: 90px;
-}
-
-.cursor {
-    cursor: none;
-    left: 0;
-    top: 0;
-    width: 100px;
-    visibility: hidden;
-    position: relative;
 }
 
 .controls{
