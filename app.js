@@ -4,6 +4,7 @@ const canvas = document.getElementById("jsCanvas");
 const colors = document.getElementsByClassName("controls__color");
 const range = document.getElementById("jsRange");
 const clean = document.getElementById("jsClean");
+const save = document.getElementById("jsSave");
 const ctx = canvas.getContext("2d");
 
 let painting = false;
@@ -51,11 +52,24 @@ function cleanThisCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function saveThisPainting() {
+    const image = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "paint";
+    link.click();
+}
+
+function blockRightMouse(event) {
+    event.preventDefault();
+}
+
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
+    canvas.addEventListener("contextmenu", blockRightMouse);
 }
 
 Array.from(colors).forEach(color =>
@@ -67,5 +81,9 @@ if (range) {
 }
 
 if (clean) {
-    clean.addEventListener("click", cleanThisCanvas)
+    clean.addEventListener("click", cleanThisCanvas);
+}
+
+if(save) {
+    save.addEventListener("click", saveThisPainting);
 }
